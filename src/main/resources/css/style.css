@@ -1,0 +1,38 @@
+.anchorPane {
+    -fx-background-color: #2A2E37;
+    /*-fx-background-image: url("images/background.png");*/
+}
+
+.pickerList {
+    -fx-background-color: #373E48;
+    -fx-background-radius: 10;
+    -fx-text-fill: #CE584A;
+    -fx-font-weight: bold;
+    -fx-font-size: 11;
+    -fx-font-family: Arial;
+}
+
+.button {
+    -fx-background-color: #373E48;
+    -fx-font-family: Calibri;
+    -fx-font-size: 18;
+    -fx-background-radius: 2;
+    -fx-text-fill: #DFDFDF;
+}
+
+.button:hover {
+    -fx-background-color: #EF6C00;
+    -fx-font-family: "Lucida Sans Typewriter";
+    -fx-background-radius: 0;
+    -fx-font-style: italic;
+}
+
+.buttonList {
+    -fx-background-color: #354450;
+    -fx-font-size: 15;
+}
+
+.buttonList:hover {
+    -fx-background-color: #0C4A6E;
+    -fx-font-size: 12;
+}
