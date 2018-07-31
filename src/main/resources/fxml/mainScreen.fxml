@@ -18,7 +18,7 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="174.0" prefWidth="268.0" spacing="25.0">
                             <children>
-                                <JFXButton fx:id="lista1Button" alignment="CENTER" buttonType="RAISED" defaultButton="true" onAction="#loadLista1" onMouseEntered="#list1ChangeText" onMouseExited="#list1backToPrimatyText" prefHeight="120.0" prefWidth="100.0" styleClass="buttonList" text="LISTA1" wrapText="true">
+                                <JFXButton fx:id="lista1Button" alignment="CENTER" buttonType="RAISED" defaultButton="true" onAction="#loadLista1" onMouseEntered="#list1ChangeText" onMouseExited="#list1backToPrimatyText" prefHeight="120.0" prefWidth="100.0" styleClass="buttonList" text="LISTA" wrapText="true">
                                     <font>
                                         <Font name="System Bold" size="12.0" />
                                     </font>
@@ -29,7 +29,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </JFXButton>
-                                <JFXButton fx:id="lista2Button" alignment="CENTER" buttonType="RAISED" defaultButton="true" onAction="#loadLista2" onMouseEntered="#list2ChangeText" onMouseExited="#list2backToPrimatyText" prefHeight="120.0" prefWidth="100.0" styleClass="buttonList" text="LISTA2" wrapText="true">
+                                <JFXButton fx:id="lista2Button" alignment="CENTER" buttonType="RAISED" defaultButton="true" onAction="#loadLista2" onMouseEntered="#list2ChangeText" onMouseExited="#list2backToPrimatyText" prefHeight="120.0" prefWidth="100.0" styleClass="buttonList" text="LISTA 2" wrapText="true">
                                     <font>
                                         <Font name="System Bold" size="12.0" />
                                     </font>
@@ -71,18 +71,18 @@
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
                 </JFXButton>
-            <JFXButton id="button" fx:id="runButton" layoutX="40.0" layoutY="70.0" onAction="#run" prefHeight="35.0" prefWidth="120.0" text="PORÓWNAJ">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <HBox.margin>
-                  <Insets right="25.0" />
-               </HBox.margin>
-            </JFXButton>
+                <JFXButton id="button" fx:id="runButton" layoutX="40.0" layoutY="70.0" onAction="#run" prefHeight="35.0" prefWidth="120.0" text="PORÓWNAJ">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <HBox.margin>
+                        <Insets right="25.0" />
+                    </HBox.margin>
+                </JFXButton>
             </children>
         </HBox>
     </children>

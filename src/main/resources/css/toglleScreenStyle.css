@@ -1,3 +1,26 @@
 .root {
     -fx-background-color: #2A2E37;
 }
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-font-family: Calibri;
+    -fx-text-alignment: justify;
+    -fx-background-color: #373E48;
+}
+
+.button {
+    -fx-background-color: #373E48;
+    -fx-font-family: Calibri;
+    -fx-font-size: 18;
+    -fx-background-radius: 2;
+    -fx-text-fill: #DFDFDF;
+}
+
+.button:hover {
+    -fx-background-color: #EF6C00;
+    -fx-font-family: "Lucida Sans Typewriter";
+    -fx-background-radius: 0;
+    -fx-font-style: italic;
+}

@@ -16,6 +16,7 @@ import java.io.File;
 public class MainController {
 
     Operations operations = new Operations();
+    Toggle1ScreenController toggle1ScreenController = new Toggle1ScreenController();
 
     private Main main;
 
@@ -67,12 +68,24 @@ public class MainController {
         return getListFile(list);
     }
 
-    @FXML
-    public void run() {
-        if (toggleButton1.isSelected()){
+    public void runToggle1() {
+        if (toggleButton1.isSelected()) {
             operations.compareTheSame();
             main.loadToggleButton1Screen();
         }
+    }
+
+    public void runToggle2() {
+        if (toggleButton2.isSelected()) {
+            operations.compareDiff();
+            main.loadToggleButton2Screen();
+        }
+    }
+
+    @FXML
+    public void run() {
+        runToggle1();
+        runToggle2();
     }
 
     @FXML
@@ -145,15 +158,25 @@ public class MainController {
                 new FileChooser.ExtensionFilter("Pliki csv", "*.csv"
                 ));
         File selectedFile = fileChooser[list].showOpenDialog(null);
-        if (list == 0) {
-            lista1Button.setText(selectedFile.getName());
-            lista1Button.setStyle("-fx-background-color: #B14F23");
-            operations.loadList(selectedFile, list);
-        } else {
-            lista2Button.setText(selectedFile.getName());
-            lista2Button.setStyle("-fx-background-color: #B14F23");
-            operations.loadList(selectedFile, list);
+        try {
+            if (list == 0) {
+                lista1Button.setText(selectedFile.getName());
+                lista1Button.setOnMouseEntered(event -> lista1Button.setText("Lista"));
+                lista1Button.setOnMouseExited(event -> lista1Button.setText(selectedFile.getName()));
+
+                lista1Button.setStyle("-fx-background-color: #B14F23");
+                operations.loadList(selectedFile, list);
+            } else {
+                lista2Button.setText(selectedFile.getName());
+                lista2Button.setOnMouseEntered(event -> lista2Button.setText("Lista 2"));
+                lista2Button.setOnMouseExited(event -> lista2Button.setText(selectedFile.getName()));
+                lista2Button.setStyle("-fx-background-color: #B14F23");
+                operations.loadList(selectedFile, list);
+            }
+        } catch (Exception e) {
+            operations.infoAlert("Żaden plik nie został wybrany.");
         }
+
         return selectedFile;
     }
 
