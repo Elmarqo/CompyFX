@@ -3,6 +3,7 @@ package pl.mareksliwinski;
 import controllers.MainController;
 import controllers.Toggle1ScreenController;
 import controllers.Toggle2ScreenController;
+import controllers.Toggle3ScreenController;
 import javafx.application.Application;
 
 import javafx.beans.property.StringProperty;
@@ -65,10 +66,12 @@ public class Main extends Application {
         Toggle1ScreenController toggle1ScreenController = loader.getController();
         toggle1ScreenController.setMain(this, secondaryStage);
 
+        secondaryStage.setTitle(" JEST W LISTA I LISTA 2");
         secondaryStage.initOwner(primaryStage);
         secondaryStage.initModality(Modality.WINDOW_MODAL);
-        secondaryStage.setX(600);
-        secondaryStage.setY(600);
+        secondaryStage.setX(500);
+        secondaryStage.setY(300);
+        secondaryStage.resizableProperty().set(false);
         secondaryStage.setScene(scene);
         secondaryStage.show();
     }
@@ -87,11 +90,37 @@ public class Main extends Application {
         Toggle2ScreenController toggle2ScreenController = loader.getController();
         toggle2ScreenController.setMain(this, thirdStage);
 
+        thirdStage.setTitle("JEST W LISTA 2, NIE MA W LISTA");
         thirdStage.initOwner(primaryStage);
         thirdStage.initModality(Modality.WINDOW_MODAL);
-        thirdStage.setX(500);
-        thirdStage.setY(500);
+        thirdStage.setX(600);
+        thirdStage.setY(300);
+        thirdStage.resizableProperty().set(false);
         thirdStage.setScene(scene);
         thirdStage.show();
+    }
+
+    public void loadToggleButton3Screen() {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/toggle3Screen.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(pane);
+        Stage fourthStage = new Stage();
+
+        Toggle3ScreenController toggle3ScreenController = loader.getController();
+        toggle3ScreenController.setMain(this, fourthStage);
+
+        fourthStage.setTitle("JEST W LISTA, NIE MA W LISTA 2");
+        fourthStage.initOwner(primaryStage);
+        fourthStage.initModality(Modality.WINDOW_MODAL);
+        fourthStage.setX(700);
+        fourthStage.setY(300);
+        fourthStage.resizableProperty().set(false);
+        fourthStage.setScene(scene);
+        fourthStage.show();
     }
 }

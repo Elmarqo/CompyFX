@@ -1,6 +1,8 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -23,9 +25,6 @@ public class Toggle2ScreenController {
     private Label label;
 
     @FXML
-    private JFXButton exitButton;
-
-    @FXML
     private JFXButton saveButton;
 
     @FXML
@@ -35,11 +34,13 @@ public class Toggle2ScreenController {
 
     @FXML
     public void save() {
-
+        operations.saveToFile(Operations.getResultListCompareDiff());
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         label.setText(operations.tekst());
+        IntegerProperty size = new SimpleIntegerProperty(Operations.getResultListCompareDiff().size());
+        saveButton.disableProperty().bind(size.isEqualTo(0));
     }
 }

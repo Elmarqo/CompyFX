@@ -2,10 +2,9 @@ package pl.mareksliwinski;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.stage.FileChooser;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +14,34 @@ public class Operations {
 
     private List<String> list1 = new ArrayList<>();
     private List<String> list2 = new ArrayList<>();
+    private static List<String> resultListCompareTheSame = new ArrayList<>();
+    private static List<String> resultListCompareDiff = new ArrayList<>();
+    private static List<String> resultListCompareDiff2 = new ArrayList<>();
     public static String text;
+
+    public static List<String> getResultListCompareTheSame() {
+        return resultListCompareTheSame;
+    }
+
+    public static void setResultListCompareTheSame(String elem) {
+        Operations.resultListCompareTheSame.add(elem);
+    }
+
+    public static List<String> getResultListCompareDiff() {
+        return resultListCompareDiff;
+    }
+
+    public static void setResultListCompareDiff(String elem) {
+        Operations.resultListCompareDiff.add(elem);
+    }
+
+    public static List<String> getResultListCompareDiff2() {
+        return resultListCompareDiff2;
+    }
+
+    public static void setResultListCompareDiff2(String elem) {
+        Operations.resultListCompareDiff2.add(elem);
+    }
 
     public void loadList(File file, int listNumber) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
@@ -33,38 +59,53 @@ public class Operations {
         }
     }
 
-    public List<String> compareTheSame() {
-       text = "";
+    public void compareTheSame() {
+        text = "";
         Collections.sort(list1);
         Collections.sort(list2);
-        List<String> resultList = new ArrayList<>();
 
         for (String elem : list2) {
             int index = Collections.binarySearch(list1, elem);
             if (index >= 0)
-                resultList.add(elem);
+                setResultListCompareTheSame(elem);
         }
 
-        if (resultList.size() != 0)
-            text = "Liczba rekordów znajdujących sie w Lista i Lista 2 wynosi: " + df(resultList.size()) + "." + "\nZapisz wynik.";
+        if (getResultListCompareTheSame().size() != 0)
+            text = "Liczba rekordów znajdujących sie w Lista i Lista 2, wynosi: " + df(getResultListCompareTheSame().size()) + "." + "\nZapisz wynik.";
         else
-            text = "Liczba rekordów znajdujących sie w Lista i Lista 2 wynosi: " + df(resultList.size());
-        return resultList;
+            text = "Liczba rekordów znajdujących sie w Lista i Lista 2, wynosi: " + df(getResultListCompareTheSame().size());
     }
 
-    public List<String> compareDiff(){
+    public void compareDiff() {
         text = "";
         Collections.sort(list1);
         Collections.sort(list2);
-        List<String> resultList = new ArrayList<>();
 
         for (String elem : list2) {
             int index = Collections.binarySearch(list1, elem);
             if (index < 0)
-                resultList.add(elem);
+                setResultListCompareDiff(elem);
         }
-            text = "Liczba rekordow znajdujacych sie w Lista 2, a nie znajdujacych sie w \nLista wynosi: " + df(resultList.size()) + ".  Zapisz wynik.";
-        return resultList;
+        if (getResultListCompareDiff().size() != 0)
+            text = "Liczba rekordow znajdujacych sie w Lista 2, a nie znajdujacych sie w \nLista, wynosi: " + df(getResultListCompareDiff().size()) + ".  Zapisz wynik.";
+        else
+            text = "Liczba rekordow znajdujacych sie w Lista 2, a nie znajdujacych sie w \nLista, wynosi: " + df(getResultListCompareDiff().size());
+    }
+
+    public void compareDiff2() {
+        text = "";
+        Collections.sort(list2);
+        Collections.sort(list1);
+
+        for (String elem : list1) {
+            int index = Collections.binarySearch(list2, elem);
+            if (index < 0)
+                setResultListCompareDiff2(elem);
+        }
+        if (getResultListCompareDiff2().size() != 0)
+            text = "Liczba rekordow znajdujacych sie w Lista, a nie znajdujacych sie w \nLista 2, wynosi: " + df(getResultListCompareDiff2().size()) + ".  Zapisz wynik.";
+        else
+            text = "Liczba rekordow znajdujacych sie w Lista, a nie znajdujacych sie w \nLista 2, wynosi: " + df(getResultListCompareDiff2().size());
     }
 
     public String tekst() {
@@ -88,5 +129,19 @@ public class Operations {
     String df(int number) {
         DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
         return decimalFormat.format(number);
+    }
+
+    public void saveToFile(List<String> list) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Pliki txt", "*.txt"));
+        File savedFile = fileChooser.showSaveDialog(null);
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(savedFile))) {
+            for (String elem : list) {
+                bufferedWriter.write(elem + "\n");
+            }
+        } catch (Exception e) {
+            infoAlert(e.getMessage());
+        }
     }
 }

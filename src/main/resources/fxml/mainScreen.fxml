@@ -44,8 +44,8 @@
                         </HBox>
                         <HBox alignment="TOP_CENTER" prefHeight="20.0" prefWidth="200.0" spacing="25.0">
                             <children>
-                                <JFXProgressBar prefHeight="7.0" prefWidth="100.0" />
-                                <JFXProgressBar layoutX="10.0" layoutY="10.0" prefHeight="7.0" prefWidth="100.0" />
+                                <JFXProgressBar fx:id="progressbarL1" prefHeight="7.0" prefWidth="100.0" />
+                                <JFXProgressBar fx:id="progressbarL2" layoutX="10.0" layoutY="10.0" prefHeight="7.0" prefWidth="100.0" />
                             </children>
                         </HBox>
                     </children>
@@ -55,9 +55,9 @@
                 </VBox>
                 <VBox prefHeight="174.0" prefWidth="268.0" styleClass="pickerList">
                     <children>
-                        <JFXToggleButton fx:id="toggleButton1" text="JEST W LISTA1 I LISTA2" textFill="#ce584a" unToggleLineColor="#ea2222" />
-                        <JFXToggleButton fx:id="toggleButton2" text="JEST W LISTA1, NIE MA W LISTA2" textFill="#ce584a" unToggleLineColor="#ea2222" />
-                        <JFXToggleButton fx:id="toggleButton3" text="JEST W LISTA2, NIE MA W LISTA1" textFill="#ce584a" unToggleLineColor="#ea2222" />
+                        <JFXToggleButton fx:id="toggleButton1" text="JEST W LISTA i LISTA 2" textFill="#ce584a" unToggleLineColor="#ea2222" />
+                        <JFXToggleButton fx:id="toggleButton2" text="JEST W LISTA,  NIE MA W LISTA 2" textFill="#ce584a" unToggleLineColor="#ea2222" />
+                        <JFXToggleButton fx:id="toggleButton3" text="JEST W LISTA 2,  NIE MA W LISTA" textFill="#ce584a" unToggleLineColor="#ea2222" />
                     </children>
                 </VBox>
             </children>

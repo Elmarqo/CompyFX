@@ -1,6 +1,7 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.application.Platform;
 import javafx.beans.binding.BooleanBinding;
@@ -16,23 +17,18 @@ import java.io.File;
 public class MainController {
 
     Operations operations = new Operations();
-    Toggle1ScreenController toggle1ScreenController = new Toggle1ScreenController();
 
     private Main main;
-
-    private File file;
-
-    public File getFile() {
-        return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
-    }
 
     public void setMain(Main main) {
         this.main = main;
     }
+
+    @FXML
+    private JFXProgressBar progressbarL1;
+
+    @FXML
+    private JFXProgressBar progressBar2;
 
     @FXML
     private JFXButton lista1Button;
@@ -68,24 +64,11 @@ public class MainController {
         return getListFile(list);
     }
 
-    public void runToggle1() {
-        if (toggleButton1.isSelected()) {
-            operations.compareTheSame();
-            main.loadToggleButton1Screen();
-        }
-    }
-
-    public void runToggle2() {
-        if (toggleButton2.isSelected()) {
-            operations.compareDiff();
-            main.loadToggleButton2Screen();
-        }
-    }
-
     @FXML
     public void run() {
         runToggle1();
         runToggle2();
+        runToggle3();
     }
 
     @FXML
@@ -186,5 +169,26 @@ public class MainController {
                         (toggleButton2.selectedProperty().not().and(toggleButton3.selectedProperty().not()))));
 
         runButton.disableProperty().bind(accessToRunButton);
+    }
+
+    public void runToggle1() {
+        if (toggleButton1.isSelected()) {
+            operations.compareTheSame();
+            main.loadToggleButton1Screen();
+        }
+    }
+
+    public void runToggle2() {
+        if (toggleButton2.isSelected()) {
+            operations.compareDiff();
+            main.loadToggleButton2Screen();
+        }
+    }
+
+    public void runToggle3() {
+        if (toggleButton3.isSelected()) {
+            operations.compareDiff2();
+            main.loadToggleButton3Screen();
+        }
     }
 }
