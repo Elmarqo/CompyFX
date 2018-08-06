@@ -20,7 +20,7 @@
 
 .button:hover {
     -fx-background-color: #EF6C00;
-    -fx-font-family: "Lucida Sans Typewriter";
+    /*-fx-font-family: "Lucida Sans Typewriter";*/
     -fx-background-radius: 0;
     -fx-font-style: italic;
 }

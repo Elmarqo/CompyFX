@@ -5,13 +5,11 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.stage.FileChooser;
+
 import javafx.stage.Stage;
 import pl.mareksliwinski.Main;
 import pl.mareksliwinski.Operations;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Toggle1ScreenController {
 
@@ -22,6 +20,10 @@ public class Toggle1ScreenController {
     public void setMain(Main main, Stage secondaryStage) {
         this.main = main;
         this.secondaryStage = secondaryStage;
+    }
+
+    public Stage getSecondaryStage() {
+        return secondaryStage;
     }
 
     @FXML
@@ -37,12 +39,12 @@ public class Toggle1ScreenController {
 
     @FXML
     public void save() {
-        operations.saveToFile(Operations.getResultListCompareTheSame());
+        operations.saveToFile(Operations.getResultListCompareTheSame(), getSecondaryStage());
     }
 
     @FXML
     public void initialize() {
-        label.setText(operations.tekst());
+        label.setText(Operations.text);
         IntegerProperty size = new SimpleIntegerProperty(Operations.getResultListCompareTheSame().size());
         saveButton.disableProperty().bind(size.isEqualTo(0));
     }

@@ -20,6 +20,10 @@ public class Toggle3ScreenController {
         this.fourthStage = fourthStage;
     }
 
+    public Stage getFourthStage() {
+        return fourthStage;
+    }
+
     @FXML
     private Label label;
 
@@ -32,11 +36,11 @@ public class Toggle3ScreenController {
     }
 
     public void save() {
-        operations.saveToFile(Operations.getResultListCompareDiff2());
+        operations.saveToFile(Operations.getResultListCompareDiff2(), getFourthStage());
     }
 
     public void initialize() {
-        label.setText(operations.tekst());
+        label.setText(Operations.text);
         IntegerProperty size = new SimpleIntegerProperty(Operations.getResultListCompareDiff2().size());
         saveButton.disableProperty().bind(size.isEqualTo(0));
     }

@@ -1,11 +1,11 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.application.Platform;
 import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
@@ -23,12 +23,6 @@ public class MainController {
     public void setMain(Main main) {
         this.main = main;
     }
-
-    @FXML
-    private JFXProgressBar progressbarL1;
-
-    @FXML
-    private JFXProgressBar progressBar2;
 
     @FXML
     private JFXButton lista1Button;
@@ -78,6 +72,14 @@ public class MainController {
     }
 
     @FXML
+    public void display() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("CompyFX");
+        alert.setHeaderText("CompyFX ver. 1.0 \n(C) Marek Śliwiński \nIcons made by Freepik from www.flaticon.com ");
+        alert.showAndWait();
+    }
+
+    @FXML
     public void initialize() {
         list1ChangeText();
         list1backToPrimatyText();
@@ -87,6 +89,7 @@ public class MainController {
         toggleButton2ChangeTextColor();
         toggleButton3ChangeTextColor();
         enableRunButton();
+        clearLoadedlists();
     }
 
     public void toggleButton1ChangeTextColor() {
@@ -137,7 +140,7 @@ public class MainController {
     public File getListFile(int list) {
         FileChooser[] fileChooser = new FileChooser[2];
         fileChooser[list] = new FileChooser();
-        fileChooser[list].getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Pliki txt", "*.txt"),
+        fileChooser[list].getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Pliki tekstowe", "*.txt", " *csv"),
                 new FileChooser.ExtensionFilter("Pliki csv", "*.csv"
                 ));
         File selectedFile = fileChooser[list].showOpenDialog(null);
@@ -146,7 +149,6 @@ public class MainController {
                 lista1Button.setText(selectedFile.getName());
                 lista1Button.setOnMouseEntered(event -> lista1Button.setText("Lista"));
                 lista1Button.setOnMouseExited(event -> lista1Button.setText(selectedFile.getName()));
-
                 lista1Button.setStyle("-fx-background-color: #B14F23");
                 operations.loadList(selectedFile, list);
             } else {
@@ -169,6 +171,11 @@ public class MainController {
                         (toggleButton2.selectedProperty().not().and(toggleButton3.selectedProperty().not()))));
 
         runButton.disableProperty().bind(accessToRunButton);
+    }
+
+    public void clearLoadedlists(){
+        lista1Button.setOnMousePressed(event -> operations.getList1().clear());
+        lista2Button.setOnMousePressed(event -> operations.getList2().clear());
     }
 
     public void runToggle1() {

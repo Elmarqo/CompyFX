@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -42,12 +44,6 @@
                                 </JFXButton>
                             </children>
                         </HBox>
-                        <HBox alignment="TOP_CENTER" prefHeight="20.0" prefWidth="200.0" spacing="25.0">
-                            <children>
-                                <JFXProgressBar fx:id="progressbarL1" prefHeight="7.0" prefWidth="100.0" />
-                                <JFXProgressBar fx:id="progressbarL2" layoutX="10.0" layoutY="10.0" prefHeight="7.0" prefWidth="100.0" />
-                            </children>
-                        </HBox>
                     </children>
                     <HBox.margin>
                         <Insets />
@@ -65,25 +61,47 @@
                 <Insets top="20.0" />
             </padding>
         </HBox>
-        <HBox alignment="CENTER_RIGHT" layoutX="200.0" layoutY="260.0" prefHeight="100.0" prefWidth="200.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <HBox alignment="CENTER_RIGHT" layoutX="304.0" layoutY="260.0" prefHeight="100.0" prefWidth="325.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="304.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton id="button" fx:id="exitButton" onAction="#exit" prefHeight="35.0" prefWidth="120.0" text="WYJŚCIE">
+                <JFXButton id="button" fx:id="exitButton" onAction="#exit" prefHeight="35.0" prefWidth="130.0" text="Wyjście" textAlignment="CENTER">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/exit.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </JFXButton>
-                <JFXButton id="button" fx:id="runButton" layoutX="40.0" layoutY="70.0" onAction="#run" prefHeight="35.0" prefWidth="120.0" text="PORÓWNAJ">
+                <JFXButton id="button" fx:id="runButton" layoutX="40.0" layoutY="70.0" onAction="#run" prefHeight="35.0" prefWidth="130.0" text="Porównaj">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                     <HBox.margin>
                         <Insets right="25.0" />
                     </HBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/share-files.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </JFXButton>
             </children>
         </HBox>
+        <Label layoutY="359.0" onMouseClicked="#display" prefHeight="35.0" prefWidth="130.0" text="CompyFX" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0">
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Label>
     </children>
 </AnchorPane>
